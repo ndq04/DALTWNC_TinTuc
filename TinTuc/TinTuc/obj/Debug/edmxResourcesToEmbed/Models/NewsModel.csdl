@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TinTucModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Post_Categories" FromRole="Categories" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Post" Type="Int32" />
+    <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayViet" Type="DateTime" Precision="3" />
+    <Property Name="ButDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Comment_Post" FromRole="Comment" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TacGia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDang" Type="DateTime" Precision="3" />
+    <Property Name="Id_Categories" Type="Int32" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Post_Categories" FromRole="Post" ToRole="Categories" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Post" FromRole="Post" ToRole="Comment" />
+    <NavigationProperty Name="Media" Relationship="TinTucModel.FK_Media_Post" FromRole="Post" ToRole="Media" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Post_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="Id_Categories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Id_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" />
+    <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Post_Categories" Association="Self.FK_Post_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Post" Association="Self.FK_Comment_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <FunctionImport Name="BinhLuan_SelectByID" ReturnType="Collection(TinTucModel.BinhLuan_SelectByID_Result)">
+      <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ChiTiet_SELECT" ReturnType="Collection(TinTucModel.ChiTiet_SELECT_Result)">
+      <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ChiTiet_SelectAll" ReturnType="Collection(TinTucModel.ChiTiet_SelectAll_Result)" />
+    <FunctionImport Name="ChiTiet_SelectID" ReturnType="Collection(TinTucModel.ChiTiet_SelectID_Result)">
+      <Parameter Name="ID_DM" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ChiTiet_SelectNew" ReturnType="Collection(TinTucModel.ChiTiet_SelectNew_Result)" />
+    <FunctionImport Name="DanhMuc_SelectAll" ReturnType="Collection(TinTucModel.DanhMuc_SelectAll_Result)" />
+    <FunctionImport Name="DanhMuc_SelectID" ReturnType="Collection(TinTucModel.DanhMuc_SelectID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TinTucModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TinTucModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Media" EntityType="TinTucModel.Media" />
+    <AssociationSet Name="FK_Media_Post" Association="TinTucModel.FK_Media_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="BinhLuan_SelectByID_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Id_Post" Nullable="true" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="NgayViet" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ButDanh" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="ChiTiet_SELECT_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ChiTiet_SelectAll_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ChiTiet_SelectID_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ChiTiet_SelectNew_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DanhMuc_SelectAll_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Ten" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DanhMuc_SelectID_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Ten" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Main" Type="Boolean" />
+    <Property Name="Id_Post" Type="Int32" />
+    <NavigationProperty Name="Post" Relationship="TinTucModel.FK_Media_Post" FromRole="Media" ToRole="Post" />
+  </EntityType>
+  <Association Name="FK_Media_Post">
+    <End Type="TinTucModel.Post" Role="Post" Multiplicity="0..1" />
+    <End Type="TinTucModel.Media" Role="Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="Id_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
