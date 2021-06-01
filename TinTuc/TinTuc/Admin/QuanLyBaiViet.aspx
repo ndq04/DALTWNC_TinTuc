@@ -17,7 +17,7 @@
                     </div>
                      <div class="col-lg-4">
                         <asp:Button runat="server" ID="btnAll"
-                            CssClass="btn btn-warning" Text="Tất cả"
+                            CssClass="btn btn-secondary" Text="Tất cả"
                             OnCommand="btnAll_Command" />
                     </div>
                 </div>
@@ -54,17 +54,25 @@
                         <asp:BoundField DataField="TenBV" HeaderText="Tên Bài Viết" />
                         <asp:BoundField DataField="MoTa" HeaderText="Mô Tả" />
                         <asp:BoundField DataField="TacGia" HeaderText="Tác Giả" />
-                        <asp:BoundField DataField="NgayDang" HeaderText="Ngày Đăng" />
+                        <asp:BoundField ControlStyle-Width="100px" DataField="NgayDang" HeaderText="Ngày Đăng" />
                         <asp:TemplateField>
                             <HeaderTemplate>Chức năng</HeaderTemplate>
                             <ItemTemplate>
-                                <a href='<%# "SuaBaiViet.aspx?Idbv=" + Eval("Id").ToString()%>'>Sửa</a>
-                                <a href='<%# "UploadAnh.aspx?Idbv=" + Eval("Id").ToString()%>'>Upload ảnh</a>
-                                <asp:LinkButton runat="server" ID="btnXoa"
-                                    CssClass="text-danger"
-                                    OnClientClick="return check();"
-                                    OnCommand="btnXoa_Command"
-                                    CommandArgument='<%# Eval("Id") %>'><i class="fa fa-trash"></i></asp:LinkButton>
+                                <div style="display:flex;align-items:center;">
+                                    <div style="margin: 0 5px">
+                                        <a class="btn btn-warning" href='<%# "SuaBaiViet.aspx?Idbv=" + Eval("Id").ToString()%>'>Sửa</a>
+                                    </div>
+                                    <div style="margin: 0 5px">
+                                        <a class="btn btn-primary" href='<%# "UploadAnh.aspx?Idbv=" + Eval("Id").ToString()%>'>Ảnh</a>
+                                    </div>
+                                    <div>
+                                        <asp:LinkButton runat="server" ID="btnXoa"
+                                        CssClass="text-danger"
+                                        OnClientClick="return check();"
+                                        OnCommand="btnXoa_Command"
+                                        CommandArgument='<%# Eval("Id") %>'><i class="fa fa-trash" style="font-size:2rem"></i></asp:LinkButton>
+                                    </div>
+                                </div>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

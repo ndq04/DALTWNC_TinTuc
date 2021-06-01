@@ -12,6 +12,7 @@
                     </ol>
                     <span class="color-orange"><a><%# Eval("Ten") %></a></span>
                 </ItemTemplate>
+
             </asp:Repeater>
 
             <asp:Repeater ID="rpChiTiet" runat="server">
