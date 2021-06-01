@@ -4,21 +4,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="container-fluid">
         <div class="row mt-4 mb-4">
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
                         <asp:DropDownList class="form-control" runat="server" ID="ddlDanhMuc">
                         </asp:DropDownList>
                     </div>
                     <div class="col-lg-4">
-                        <asp:Button runat="server" ID="btnLoc"
-                            CssClass="btn btn-success" Text="Lọc Theo Danh Mục"
-                            OnCommand="btnLoc_Command" />
-                    </div>
-                     <div class="col-lg-4">
-                        <asp:Button runat="server" ID="btnAll"
-                            CssClass="btn btn-secondary" Text="Tất cả"
-                            OnCommand="btnAll_Command" />
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <asp:Button runat="server" ID="btnLoc"
+                                CssClass="btn btn-success" Text="Lọc Theo Danh Mục"
+                                OnCommand="btnLoc_Command" />
+                            </div>
+                            <div class="col-lg-7">
+                                <asp:Button runat="server" ID="btnAll"
+                                CssClass="btn btn-secondary" Text="Tất cả"
+                                OnCommand="btnAll_Command" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@
                 <!-- Navbar-->
             </div>--%>
         </div>
-        <div class="card shadow">
+        <div class="card shadow"">
             <div class="card-body">
                 <div class="ibox-title mb-4">
                     <a runat="server" href="VietBai.aspx" class="btn btn-info">Thêm mới</a>
