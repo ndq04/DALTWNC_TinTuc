@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4485b081432b4b959c28c299a22ba072" Name="Diagram1">
+      <Diagram DiagramId="1302ebd71efb4260a5c61b7c68edcdc7" Name="Diagram1">
         <EntityTypeShape EntityType="TinTucModel.Categories" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TinTucModel.Comment" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TinTucModel.Media" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />

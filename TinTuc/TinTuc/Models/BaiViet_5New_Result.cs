@@ -11,7 +11,7 @@ namespace TinTuc.Models
 {
     using System;
     
-    public partial class ChiTiet_SELECT_Result
+    public partial class BaiViet_5New_Result
     {
         public int Id { get; set; }
         public string TenBV { get; set; }

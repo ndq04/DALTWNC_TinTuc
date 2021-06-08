@@ -9,19 +9,19 @@ namespace TinTuc
 {
     public partial class ChiTiet : System.Web.UI.Page
     {
-        Models.NewEntities db = new Models.NewEntities();
+        Models.TinTucEntities db = new Models.TinTucEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
             int Idbv =Convert.ToInt32(Request.QueryString["Idbv"]);
             int Iddm = Convert.ToInt32(Request.QueryString["Iddm"]);
 
-            rpCategory.DataSource = db.DanhMuc_SelectID(Iddm);
+            rpCategory.DataSource = db.DanhMuc_ByIdCategories(Iddm);
             rpCategory.DataBind();
 
-            rpChiTiet.DataSource = db.ChiTiet_SELECT(Idbv);
+            rpChiTiet.DataSource = db.BaiViet_ByIdPost(Idbv);
             rpChiTiet.DataBind();
 
-            rpRandom.DataSource = db.ChiTiet_SelectID(Iddm);
+            rpRandom.DataSource = db.BaiViet_ByIdCategories(Iddm);
             rpRandom.DataBind();
 
             rpTag.DataSource = db.DanhMuc_SelectAll();
@@ -32,7 +32,7 @@ namespace TinTuc
         }
         public string getAnhDaiDien(int Idbv)
         {
-            Models.NewEntities db = new Models.NewEntities();
+            Models.TinTucEntities db = new Models.TinTucEntities();
             Models.Media obj = db.Media.FirstOrDefault(x => x.Id_Post == Idbv);
             if (obj == null)
             {

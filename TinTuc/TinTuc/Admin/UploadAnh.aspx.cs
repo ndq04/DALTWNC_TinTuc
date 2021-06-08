@@ -20,7 +20,7 @@ namespace TinTuc.Admin
         }
         public void getData(int Idbv)
         {
-            Models.NewEntities db = new Models.NewEntities();
+            Models.TinTucEntities db = new Models.TinTucEntities();
             dgvMedia.DataSource = db.Media.Where(x => x.Id_Post == Idbv).ToList();
             dgvMedia.DataBind();
         }
@@ -38,7 +38,7 @@ namespace TinTuc.Admin
                 fuImg.SaveAs(folder + filename);
 
                 // Bước 2: Thêm dữ liệu vào Database
-                Models.NewEntities db = new Models.NewEntities();
+                Models.TinTucEntities db = new Models.TinTucEntities();
                 Models.Media obj = new Models.Media();
                 obj.Id_Post =Convert.ToInt32(txtIdBV.Text);
                 obj.Url = filename;
@@ -51,7 +51,7 @@ namespace TinTuc.Admin
         protected void btnXoa_Command(object sender, CommandEventArgs e)
         {
             int Id = Convert.ToInt32(e.CommandArgument);
-            Models.NewEntities db = new Models.NewEntities();
+            Models.TinTucEntities db = new Models.TinTucEntities();
             Models.Media obj = db.Media.FirstOrDefault(x => x.Id == Id);
             if (obj != null)
             {

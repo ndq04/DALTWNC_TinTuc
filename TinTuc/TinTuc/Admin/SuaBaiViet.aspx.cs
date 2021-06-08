@@ -24,7 +24,7 @@ namespace TinTuc.Admin
 
         public void getDanhMuc()
         {
-            TinTuc.Models.NewEntities db = new Models.NewEntities();
+            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
             cmbDanhMuc.DataSource = db.Categories.ToList();
             cmbDanhMuc.DataValueField = "Id";
             cmbDanhMuc.DataTextField = "Ten";
@@ -33,7 +33,7 @@ namespace TinTuc.Admin
 
         public void getData(int Id)
         {
-            TinTuc.Models.NewEntities db = new Models.NewEntities();
+            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
             TinTuc.Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
             if (obj == null)
             {
@@ -54,7 +54,7 @@ namespace TinTuc.Admin
         {
             try
             {
-                Models.NewEntities db = new Models.NewEntities();
+                Models.TinTucEntities db = new Models.TinTucEntities();
                 int Id = Convert.ToInt32( txtMaBV.Text);
                 string tenbv = txtTenBV.Text;
                 string mota = txtMoTa.Text;

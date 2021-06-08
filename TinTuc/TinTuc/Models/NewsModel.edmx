@@ -96,21 +96,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BaiViet_5New" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BaiViet_ByIdCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_DM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BaiViet_ByIdPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_BV" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BaiViet_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BinhLuan_ByIdPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_BV" Type="int" Mode="In" />
+        </Function>
         <Function Name="BinhLuan_SelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_BV" Type="int" Mode="In" />
         </Function>
-        <Function Name="ChiTiet_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID_BV" Type="int" Mode="In" />
+        <Function Name="DanhMuc_ByIdCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
-        <Function Name="ChiTiet_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="ChiTiet_SelectID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID_DM" Type="int" Mode="In" />
-        </Function>
-        <Function Name="ChiTiet_SelectNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DanhMuc_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="DanhMuc_SelectID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
-        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -264,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="NewEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TinTucEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Comment" EntityType="Self.Comment" />
           <EntitySet Name="Media" EntityType="Self.Media" />
@@ -283,21 +286,24 @@
             <End Role="Post" EntitySet="Post" />
             <End Role="Media" EntitySet="Media" />
           </AssociationSet>
+          <FunctionImport Name="BaiViet_5New" ReturnType="Collection(TinTucModel.BaiViet_5New_Result)" />
+          <FunctionImport Name="BaiViet_ByIdCategories" ReturnType="Collection(TinTucModel.BaiViet_ByIdCategories_Result)">
+            <Parameter Name="ID_DM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BaiViet_ByIdPost" ReturnType="Collection(TinTucModel.BaiViet_ByIdPost_Result)">
+            <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BaiViet_SelectAll" ReturnType="Collection(TinTucModel.BaiViet_SelectAll_Result)" />
+          <FunctionImport Name="BinhLuan_ByIdPost" ReturnType="Collection(TinTucModel.BinhLuan_ByIdPost_Result)">
+            <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="BinhLuan_SelectByID" ReturnType="Collection(TinTucModel.BinhLuan_SelectByID_Result)">
             <Parameter Name="ID_BV" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ChiTiet_SELECT" ReturnType="Collection(TinTucModel.ChiTiet_SELECT_Result)">
-            <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+          <FunctionImport Name="DanhMuc_ByIdCategories" ReturnType="Collection(TinTucModel.DanhMuc_ByIdCategories_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ChiTiet_SelectAll" ReturnType="Collection(TinTucModel.ChiTiet_SelectAll_Result)" />
-          <FunctionImport Name="ChiTiet_SelectID" ReturnType="Collection(TinTucModel.ChiTiet_SelectID_Result)">
-            <Parameter Name="ID_DM" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="ChiTiet_SelectNew" ReturnType="Collection(TinTucModel.ChiTiet_SelectNew_Result)" />
           <FunctionImport Name="DanhMuc_SelectAll" ReturnType="Collection(TinTucModel.DanhMuc_SelectAll_Result)" />
-          <FunctionImport Name="DanhMuc_SelectID" ReturnType="Collection(TinTucModel.DanhMuc_SelectID_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -329,6 +335,49 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="BaiViet_5New_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BaiViet_ByIdCategories_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BaiViet_ByIdPost_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BaiViet_SelectAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BinhLuan_ByIdPost_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Id_Post" Nullable="true" />
+          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="NgayViet" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ButDanh" Nullable="true" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="BinhLuan_SelectByID_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="Id_Post" Nullable="true" />
@@ -336,47 +385,11 @@
           <Property Type="DateTime" Name="NgayViet" Nullable="true" Precision="23" />
           <Property Type="String" Name="ButDanh" Nullable="true" MaxLength="100" />
         </ComplexType>
-        <ComplexType Name="ChiTiet_SELECT_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="ChiTiet_SelectAll_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="ChiTiet_SelectID_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="ChiTiet_SelectNew_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-          <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="DanhMuc_SelectAll_Result">
+        <ComplexType Name="DanhMuc_ByIdCategories_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Ten" Nullable="true" MaxLength="100" />
         </ComplexType>
-        <ComplexType Name="DanhMuc_SelectID_Result">
+        <ComplexType Name="DanhMuc_SelectAll_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Ten" Nullable="true" MaxLength="100" />
         </ComplexType>
@@ -396,7 +409,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TinTucModelStoreContainer" CdmEntityContainer="NewEntities">
+        <EntityContainerMapping StorageEntityContainer="TinTucModelStoreContainer" CdmEntityContainer="TinTucEntities">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="TinTucModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
@@ -458,6 +471,69 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BaiViet_5New" FunctionName="TinTucModel.Store.BaiViet_5New">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinTucModel.BaiViet_5New_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BaiViet_ByIdCategories" FunctionName="TinTucModel.Store.BaiViet_ByIdCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinTucModel.BaiViet_ByIdCategories_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BaiViet_ByIdPost" FunctionName="TinTucModel.Store.BaiViet_ByIdPost">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinTucModel.BaiViet_ByIdPost_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BaiViet_SelectAll" FunctionName="TinTucModel.Store.BaiViet_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinTucModel.BaiViet_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BinhLuan_ByIdPost" FunctionName="TinTucModel.Store.BinhLuan_ByIdPost">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinTucModel.BinhLuan_ByIdPost_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Post" ColumnName="Id_Post" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="NgayViet" ColumnName="NgayViet" />
+                <ScalarProperty Name="ButDanh" ColumnName="ButDanh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BinhLuan_SelectByID" FunctionName="TinTucModel.Store.BinhLuan_SelectByID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TinTucModel.BinhLuan_SelectByID_Result">
@@ -469,69 +545,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ChiTiet_SELECT" FunctionName="TinTucModel.Store.ChiTiet_SELECT">
+          <FunctionImportMapping FunctionImportName="DanhMuc_ByIdCategories" FunctionName="TinTucModel.Store.DanhMuc_ByIdCategories">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SELECT_Result">
+              <ComplexTypeMapping TypeName="TinTucModel.DanhMuc_ByIdCategories_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ChiTiet_SelectAll" FunctionName="TinTucModel.Store.ChiTiet_SelectAll">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SelectAll_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ChiTiet_SelectID" FunctionName="TinTucModel.Store.ChiTiet_SelectID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SelectID_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ChiTiet_SelectNew" FunctionName="TinTucModel.Store.ChiTiet_SelectNew">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SelectNew_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-                <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DanhMuc_SelectAll" FunctionName="TinTucModel.Store.DanhMuc_SelectAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TinTucModel.DanhMuc_SelectAll_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DanhMuc_SelectID" FunctionName="TinTucModel.Store.DanhMuc_SelectID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinTucModel.DanhMuc_SelectID_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
               </ComplexTypeMapping>

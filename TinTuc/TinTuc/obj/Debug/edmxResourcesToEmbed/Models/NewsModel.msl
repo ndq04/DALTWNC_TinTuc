@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TinTucModelStoreContainer" CdmEntityContainer="NewsEntities">
+  <EntityContainerMapping StorageEntityContainer="TinTucModelStoreContainer" CdmEntityContainer="TinTucEntities">
     <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="TinTucModel.Categories">
         <MappingFragment StoreEntitySet="Categories">
@@ -17,6 +17,16 @@
           <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
           <ScalarProperty Name="NgayViet" ColumnName="NgayViet" />
           <ScalarProperty Name="ButDanh" ColumnName="ButDanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Media">
+      <EntityTypeMapping TypeName="TinTucModel.Media">
+        <MappingFragment StoreEntitySet="Media">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Main" ColumnName="Main" />
+          <ScalarProperty Name="Id_Post" ColumnName="Id_Post" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -52,6 +62,69 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="BaiViet_5New" FunctionName="TinTucModel.Store.BaiViet_5New">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinTucModel.BaiViet_5New_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BaiViet_ByIdCategories" FunctionName="TinTucModel.Store.BaiViet_ByIdCategories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinTucModel.BaiViet_ByIdCategories_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BaiViet_ByIdPost" FunctionName="TinTucModel.Store.BaiViet_ByIdPost">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinTucModel.BaiViet_ByIdPost_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BaiViet_SelectAll" FunctionName="TinTucModel.Store.BaiViet_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinTucModel.BaiViet_SelectAll_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BinhLuan_ByIdPost" FunctionName="TinTucModel.Store.BinhLuan_ByIdPost">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinTucModel.BinhLuan_ByIdPost_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Post" ColumnName="Id_Post" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="NgayViet" ColumnName="NgayViet" />
+          <ScalarProperty Name="ButDanh" ColumnName="ButDanh" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="BinhLuan_SelectByID" FunctionName="TinTucModel.Store.BinhLuan_SelectByID">
       <ResultMapping>
         <ComplexTypeMapping TypeName="TinTucModel.BinhLuan_SelectByID_Result">
@@ -63,69 +136,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ChiTiet_SELECT" FunctionName="TinTucModel.Store.ChiTiet_SELECT">
+    <FunctionImportMapping FunctionImportName="DanhMuc_ByIdCategories" FunctionName="TinTucModel.Store.DanhMuc_ByIdCategories">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SELECT_Result">
+        <ComplexTypeMapping TypeName="TinTucModel.DanhMuc_ByIdCategories_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ChiTiet_SelectAll" FunctionName="TinTucModel.Store.ChiTiet_SelectAll">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SelectAll_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ChiTiet_SelectID" FunctionName="TinTucModel.Store.ChiTiet_SelectID">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SelectID_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ChiTiet_SelectNew" FunctionName="TinTucModel.Store.ChiTiet_SelectNew">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinTucModel.ChiTiet_SelectNew_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
-          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-          <ScalarProperty Name="Id_Categories" ColumnName="Id_Categories" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="DanhMuc_SelectAll" FunctionName="TinTucModel.Store.DanhMuc_SelectAll">
       <ResultMapping>
         <ComplexTypeMapping TypeName="TinTucModel.DanhMuc_SelectAll_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Ten" ColumnName="Ten" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="DanhMuc_SelectID" FunctionName="TinTucModel.Store.DanhMuc_SelectID">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinTucModel.DanhMuc_SelectID_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
         </ComplexTypeMapping>
@@ -155,15 +176,5 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TinTucModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TinTucModel.Store.sp_upgraddiagrams" />
-    <EntitySetMapping Name="Media">
-      <EntityTypeMapping TypeName="TinTucModel.Media">
-        <MappingFragment StoreEntitySet="Media">
-          <ScalarProperty Name="Id_Post" ColumnName="Id_Post" />
-          <ScalarProperty Name="Main" ColumnName="Main" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

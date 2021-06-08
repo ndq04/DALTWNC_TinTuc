@@ -57,8 +57,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="banner-img">
-                    <a href="https://www.thegioididong.com/flashsale">
-                        <img src="Uploads/giang-sinh-800-170-800x170.png" alt="" class="img-fluid" /></a>
+                    <a href="https://www.thegioididong.com/flashsale" target="_blank">
+                        <img src="Uploads/Images/giang-sinh-800-170-800x170.png" alt="" class="img-fluid" /></a>
                 </div>
                 <!-- end banner-img -->
                 <!-- end banner -->
@@ -112,9 +112,7 @@
                         <asp:Repeater ID="rpComment" runat="server">
                             <ItemTemplate>
                                 <div class="media">
-                                    <a class="media-left" href="#">
-                                        <img src="Uploads/Images/user.jpg" alt="" class="rounded-circle" />
-                                    </a>
+                                    <img src="Uploads/Images/avatar.png" alt="" class="rounded-circle" />    
                                     <div class="media-body">
                                         <h4 class="media-heading user_name"><%# Eval("ButDanh") %><small>/ <%# Eval("NgayViet") %></small></h4>
                                         <p><%# Eval("NoiDung") %></p>

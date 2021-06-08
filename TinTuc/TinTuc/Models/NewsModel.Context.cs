@@ -15,10 +15,10 @@ namespace TinTuc.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class NewEntities : DbContext
+    public partial class TinTucEntities : DbContext
     {
-        public NewEntities()
-            : base("name=NewEntities")
+        public TinTucEntities()
+            : base("name=TinTucEntities")
         {
         }
     
@@ -34,6 +34,43 @@ namespace TinTuc.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     
+        public virtual ObjectResult<BaiViet_5New_Result> BaiViet_5New()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BaiViet_5New_Result>("BaiViet_5New");
+        }
+    
+        public virtual ObjectResult<BaiViet_ByIdCategories_Result> BaiViet_ByIdCategories(Nullable<int> iD_DM)
+        {
+            var iD_DMParameter = iD_DM.HasValue ?
+                new ObjectParameter("ID_DM", iD_DM) :
+                new ObjectParameter("ID_DM", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BaiViet_ByIdCategories_Result>("BaiViet_ByIdCategories", iD_DMParameter);
+        }
+    
+        public virtual ObjectResult<BaiViet_ByIdPost_Result> BaiViet_ByIdPost(Nullable<int> iD_BV)
+        {
+            var iD_BVParameter = iD_BV.HasValue ?
+                new ObjectParameter("ID_BV", iD_BV) :
+                new ObjectParameter("ID_BV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BaiViet_ByIdPost_Result>("BaiViet_ByIdPost", iD_BVParameter);
+        }
+    
+        public virtual ObjectResult<BaiViet_SelectAll_Result> BaiViet_SelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BaiViet_SelectAll_Result>("BaiViet_SelectAll");
+        }
+    
+        public virtual ObjectResult<BinhLuan_ByIdPost_Result> BinhLuan_ByIdPost(Nullable<int> iD_BV)
+        {
+            var iD_BVParameter = iD_BV.HasValue ?
+                new ObjectParameter("ID_BV", iD_BV) :
+                new ObjectParameter("ID_BV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BinhLuan_ByIdPost_Result>("BinhLuan_ByIdPost", iD_BVParameter);
+        }
+    
         public virtual ObjectResult<BinhLuan_SelectByID_Result> BinhLuan_SelectByID(Nullable<int> iD_BV)
         {
             var iD_BVParameter = iD_BV.HasValue ?
@@ -43,46 +80,18 @@ namespace TinTuc.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BinhLuan_SelectByID_Result>("BinhLuan_SelectByID", iD_BVParameter);
         }
     
-        public virtual ObjectResult<ChiTiet_SELECT_Result> ChiTiet_SELECT(Nullable<int> iD_BV)
+        public virtual ObjectResult<DanhMuc_ByIdCategories_Result> DanhMuc_ByIdCategories(Nullable<int> iD)
         {
-            var iD_BVParameter = iD_BV.HasValue ?
-                new ObjectParameter("ID_BV", iD_BV) :
-                new ObjectParameter("ID_BV", typeof(int));
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTiet_SELECT_Result>("ChiTiet_SELECT", iD_BVParameter);
-        }
-    
-        public virtual ObjectResult<ChiTiet_SelectAll_Result> ChiTiet_SelectAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTiet_SelectAll_Result>("ChiTiet_SelectAll");
-        }
-    
-        public virtual ObjectResult<ChiTiet_SelectID_Result> ChiTiet_SelectID(Nullable<int> iD_DM)
-        {
-            var iD_DMParameter = iD_DM.HasValue ?
-                new ObjectParameter("ID_DM", iD_DM) :
-                new ObjectParameter("ID_DM", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTiet_SelectID_Result>("ChiTiet_SelectID", iD_DMParameter);
-        }
-    
-        public virtual ObjectResult<ChiTiet_SelectNew_Result> ChiTiet_SelectNew()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTiet_SelectNew_Result>("ChiTiet_SelectNew");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DanhMuc_ByIdCategories_Result>("DanhMuc_ByIdCategories", iDParameter);
         }
     
         public virtual ObjectResult<DanhMuc_SelectAll_Result> DanhMuc_SelectAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DanhMuc_SelectAll_Result>("DanhMuc_SelectAll");
-        }
-    
-        public virtual ObjectResult<DanhMuc_SelectID_Result> DanhMuc_SelectID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DanhMuc_SelectID_Result>("DanhMuc_SelectID", idParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

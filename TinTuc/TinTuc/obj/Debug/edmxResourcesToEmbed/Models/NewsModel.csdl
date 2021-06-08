@@ -19,6 +19,16 @@
     <Property Name="ButDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Post" Relationship="Self.FK_Comment_Post" FromRole="Comment" ToRole="Post" />
   </EntityType>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Main" Type="Boolean" />
+    <Property Name="Id_Post" Type="Int32" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Media_Post" FromRole="Media" ToRole="Post" />
+  </EntityType>
   <EntityType Name="Post">
     <Key>
       <PropertyRef Name="Id" />
@@ -32,7 +42,7 @@
     <Property Name="Id_Categories" Type="Int32" />
     <NavigationProperty Name="Categories" Relationship="Self.FK_Post_Categories" FromRole="Post" ToRole="Categories" />
     <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Post" FromRole="Post" ToRole="Comment" />
-    <NavigationProperty Name="Media" Relationship="TinTucModel.FK_Media_Post" FromRole="Post" ToRole="Media" />
+    <NavigationProperty Name="Media" Relationship="Self.FK_Media_Post" FromRole="Post" ToRole="Media" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -75,9 +85,22 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="NewsEntities" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_Media_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Media" Type="Self.Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="Id_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TinTucEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Categories" />
     <EntitySet Name="Comment" EntityType="Self.Comment" />
+    <EntitySet Name="Media" EntityType="Self.Media" />
     <EntitySet Name="Post" EntityType="Self.Post" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
@@ -89,21 +112,28 @@
       <End Role="Post" EntitySet="Post" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
+    <AssociationSet Name="FK_Media_Post" Association="Self.FK_Media_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <FunctionImport Name="BaiViet_5New" ReturnType="Collection(TinTucModel.BaiViet_5New_Result)" />
+    <FunctionImport Name="BaiViet_ByIdCategories" ReturnType="Collection(TinTucModel.BaiViet_ByIdCategories_Result)">
+      <Parameter Name="ID_DM" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BaiViet_ByIdPost" ReturnType="Collection(TinTucModel.BaiViet_ByIdPost_Result)">
+      <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BaiViet_SelectAll" ReturnType="Collection(TinTucModel.BaiViet_SelectAll_Result)" />
+    <FunctionImport Name="BinhLuan_ByIdPost" ReturnType="Collection(TinTucModel.BinhLuan_ByIdPost_Result)">
+      <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="BinhLuan_SelectByID" ReturnType="Collection(TinTucModel.BinhLuan_SelectByID_Result)">
       <Parameter Name="ID_BV" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="ChiTiet_SELECT" ReturnType="Collection(TinTucModel.ChiTiet_SELECT_Result)">
-      <Parameter Name="ID_BV" Mode="In" Type="Int32" />
+    <FunctionImport Name="DanhMuc_ByIdCategories" ReturnType="Collection(TinTucModel.DanhMuc_ByIdCategories_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="ChiTiet_SelectAll" ReturnType="Collection(TinTucModel.ChiTiet_SelectAll_Result)" />
-    <FunctionImport Name="ChiTiet_SelectID" ReturnType="Collection(TinTucModel.ChiTiet_SelectID_Result)">
-      <Parameter Name="ID_DM" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="ChiTiet_SelectNew" ReturnType="Collection(TinTucModel.ChiTiet_SelectNew_Result)" />
     <FunctionImport Name="DanhMuc_SelectAll" ReturnType="Collection(TinTucModel.DanhMuc_SelectAll_Result)" />
-    <FunctionImport Name="DanhMuc_SelectID" ReturnType="Collection(TinTucModel.DanhMuc_SelectID_Result)">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -134,12 +164,50 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="Media" EntityType="TinTucModel.Media" />
-    <AssociationSet Name="FK_Media_Post" Association="TinTucModel.FK_Media_Post">
-      <End Role="Post" EntitySet="Post" />
-      <End Role="Media" EntitySet="Media" />
-    </AssociationSet>
   </EntityContainer>
+  <ComplexType Name="BaiViet_5New_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="BaiViet_ByIdCategories_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="BaiViet_ByIdPost_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="BaiViet_SelectAll_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="BinhLuan_ByIdPost_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Id_Post" Nullable="true" />
+    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="NgayViet" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ButDanh" Nullable="true" MaxLength="100" />
+  </ComplexType>
   <ComplexType Name="BinhLuan_SelectByID_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="Int32" Name="Id_Post" Nullable="true" />
@@ -147,47 +215,11 @@
     <Property Type="DateTime" Name="NgayViet" Nullable="true" Precision="23" />
     <Property Type="String" Name="ButDanh" Nullable="true" MaxLength="100" />
   </ComplexType>
-  <ComplexType Name="ChiTiet_SELECT_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="ChiTiet_SelectAll_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="ChiTiet_SelectID_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="ChiTiet_SelectNew_Result">
-    <Property Type="Int32" Name="Id" Nullable="false" />
-    <Property Type="String" Name="TenBV" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="TacGia" Nullable="true" MaxLength="Max" />
-    <Property Type="DateTime" Name="NgayDang" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="Id_Categories" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="DanhMuc_SelectAll_Result">
+  <ComplexType Name="DanhMuc_ByIdCategories_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="Ten" Nullable="true" MaxLength="100" />
   </ComplexType>
-  <ComplexType Name="DanhMuc_SelectID_Result">
+  <ComplexType Name="DanhMuc_SelectAll_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="String" Name="Ten" Nullable="true" MaxLength="100" />
   </ComplexType>
@@ -202,26 +234,4 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="Media">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Main" Type="Boolean" />
-    <Property Name="Id_Post" Type="Int32" />
-    <NavigationProperty Name="Post" Relationship="TinTucModel.FK_Media_Post" FromRole="Media" ToRole="Post" />
-  </EntityType>
-  <Association Name="FK_Media_Post">
-    <End Type="TinTucModel.Post" Role="Post" Multiplicity="0..1" />
-    <End Type="TinTucModel.Media" Role="Media" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Post">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Media">
-        <PropertyRef Name="Id_Post" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

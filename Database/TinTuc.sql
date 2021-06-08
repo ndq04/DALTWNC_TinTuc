@@ -50,6 +50,7 @@ CREATE TABLE Comment
 ) 
 GO
 
+/*Lấy ra tất cả danh mục */
 CREATE PROC DanhMuc_SelectAll
 AS
 BEGIN
@@ -57,25 +58,36 @@ BEGIN
 END
 GO
 
+EXEC DanhMuc_SelectAll
+GO
 
-CREATE PROC DanhMuc_SelectID(
-	@Id INT
+/*Lấy ra 1 danh mục theo Id danh mục*/
+CREATE PROC DanhMuc_ByIdCategories
+(
+	@ID INT
 )
 AS
 BEGIN
-	SELECT * FROM Categories WHERE Id = @Id
+	SELECT * FROM Categories WHERE Id = @ID
 END
 GO
 
+EXEC DanhMuc_ByIdCategories 5
+GO
 
-CREATE PROC ChiTiet_SelectAll
+/*Lấy ra tất cả bài viết*/
+CREATE PROC BaiViet_SelectAll
 AS
 BEGIN
 	SELECT * FROM Post
 END
 GO
 
-CREATE PROC ChiTiet_SelectID
+EXEC BaiViet_SelectAll
+GO
+
+/*Lấy ra tất cả bài viết theo Id danh mục*/
+CREATE PROC BaiViet_ByIdCategories
 (
 	@ID_DM INT
 )
@@ -85,7 +97,11 @@ BEGIN
 END
 GO
 
-CREATE PROC ChiTiet_SELECT
+EXEC BaiViet_ByIdCategories 6
+GO
+
+/*Lấy ra 1 bài viết theo Id bài viết*/
+CREATE PROC BaiViet_ByIdPost
 (
 	@ID_BV INT
 )
@@ -95,27 +111,30 @@ BEGIN
 END
 GO
 
-CREATE PROC BinhLuan_SelectByID
+EXEC BaiViet_ByIdPost 3
+GO
+
+/*Lấy ra tất cả bình luận theo Id bài viết*/
+CREATE PROC BinhLuan_ByIdPost
 (
 	@ID_BV INT
 )
 AS
 BEGIN
-	SELECT * FROM Comment WHERE Id = @ID_BV
+	SELECT * FROM Comment WHERE Id_Post = @ID_BV
 END
 GO
 
-CREATE PROC ChiTiet_SelectNew
+EXEC BinhLuan_ByIdPost 3
+GO
+
+/*Lấy ra 5 bài viết mới nhất*/
+CREATE PROC BaiViet_5New
 AS
 BEGIN
 	SELECT TOP 5 * FROM Post ORDER BY Id DESC
 END
 GO
 
-insert into dbo.Comment (NoiDung, NgayViet, ButDanh) 
-values (N'Nội dung bình luận 1', GETDATE(), N'Vô Danh'),
-	   (N'Nội dung bình luận 2', GETDATE(), N'Vô Danh'),
-	   (N'Nội dung bình luận 3', GETDATE(), N'Vô Danh'),
-	   (N'Nội dung bình luận 1', GETDATE(), N'Vô Danh'),
-	   (N'Nội dung bình luận 2', GETDATE(), N'Vô Danh'),
-	   (N'Nội dung bình luận 3', GETDATE(), N'Vô Danh')
+EXEC BaiViet_5New
+GO

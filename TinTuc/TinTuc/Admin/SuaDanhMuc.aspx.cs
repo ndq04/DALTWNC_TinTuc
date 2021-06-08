@@ -22,7 +22,7 @@ namespace TinTuc.Admin
         }
         public void getData(int Id)
         {
-            TinTuc.Models.NewEntities db = new Models.NewEntities();
+            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
             TinTuc.Models.Categories obj = db.Categories.FirstOrDefault(x => x.Id == Id);
             if (obj == null)
             {
@@ -40,7 +40,7 @@ namespace TinTuc.Admin
         {
             try
             {
-                Models.NewEntities db = new Models.NewEntities();
+                Models.TinTucEntities db = new Models.TinTucEntities();
                 int Id =Convert.ToInt32( txtMaDM.Text);
                 string tendm = txtTenDM.Text;
                 Models.Categories obj = db.Categories.FirstOrDefault(x => x.Id == Id);

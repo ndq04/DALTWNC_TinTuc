@@ -18,7 +18,7 @@ namespace TinTuc.Admin
         }
         public void getData()
         {
-            Models.NewEntities db = new Models.NewEntities();
+            Models.TinTucEntities db = new Models.TinTucEntities();
             List<Models.Comment> lst = db.Comment.ToList();
             dgvBinhLuan.DataSource = lst;
             dgvBinhLuan.DataBind();
@@ -29,7 +29,7 @@ namespace TinTuc.Admin
             try
             {
                 int ID_Comment = Convert.ToInt32(e.CommandArgument);
-                Models.NewEntities db = new Models.NewEntities();
+                Models.TinTucEntities db = new Models.TinTucEntities();
 
                 Models.Comment obj = db.Comment.FirstOrDefault(x => x.Id == ID_Comment);
                 if (obj != null)

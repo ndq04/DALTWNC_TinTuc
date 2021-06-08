@@ -9,7 +9,7 @@ namespace TinTuc.Admin
 {
     public partial class ThemDanhMuc : System.Web.UI.Page
     {
-        Models.NewEntities db = new Models.NewEntities();
+        Models.TinTucEntities db = new Models.TinTucEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
 

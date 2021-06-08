@@ -11,9 +11,12 @@ namespace TinTuc.Models
 {
     using System;
     
-    public partial class DanhMuc_SelectID_Result
+    public partial class BinhLuan_ByIdPost_Result
     {
         public int Id { get; set; }
-        public string Ten { get; set; }
+        public Nullable<int> Id_Post { get; set; }
+        public string NoiDung { get; set; }
+        public Nullable<System.DateTime> NgayViet { get; set; }
+        public string ButDanh { get; set; }
     }
 }
