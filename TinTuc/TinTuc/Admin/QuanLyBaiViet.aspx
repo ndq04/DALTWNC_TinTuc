@@ -26,18 +26,6 @@
                     </div>
                 </div>
             </div>
-            <%--<div class="col-lg-4">
-                <!-- Navbar Search-->
-                <div class="input-group">
-                    <asp:TextBox runat="server" ID="txtTimKiem" type="text" class="form-control" placeholder="Tìm Kiếm..."/>
-                    <div class="input-group-append">
-                         <asp:Button runat="server" ID="btnTim"
-                            CssClass="btn btn-primary" Text="Tìm Kiếm"
-                            OnCommand="btnTim_Command" />
-                    </div>
-                </div>
-                <!-- Navbar-->
-            </div>--%>
         </div>
         <div class="card shadow"">
             <div class="card-body">

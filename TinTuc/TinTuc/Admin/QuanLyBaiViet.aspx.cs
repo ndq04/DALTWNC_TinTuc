@@ -55,8 +55,8 @@ namespace TinTuc.Admin
         }
         protected void btnLoc_Command(object sender, CommandEventArgs e)
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
-            dgvBaiViet.DataSource = db.BaiViet_ByIdPost(Convert.ToInt32( ddlDanhMuc.SelectedValue));
+            Models.TinTucEntities db = new Models.TinTucEntities(); 
+            dgvBaiViet.DataSource = db.BaiViet_ByIdCategories(Convert.ToInt32( ddlDanhMuc.SelectedValue));
             dgvBaiViet.DataBind();
         }
 
