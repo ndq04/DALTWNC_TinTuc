@@ -25,7 +25,7 @@
     <link href="Templates/css/bootstrap.css" rel="stylesheet"/>
 
     <!-- FontAwesome Icons core CSS -->
-    <link href="Templates/css/fontawesome.min.css" rel="stylesheet"/>
+    <link href="Templates/fontawesome/css/fontawesome.min.css" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
     <link href="Templates/style.css" rel="stylesheet"/>
@@ -48,7 +48,7 @@
                         <div class="collapse navbar-collapse" id="navbarCollapse">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="TrangChu.aspx">Home</a>
+                                    <a class="nav-link" href="TrangChu.aspx">Trang Chủ</a>
                                 </li>
                                 <asp:Repeater runat="server" ID="rpPost">
                                     <ItemTemplate>
@@ -74,17 +74,6 @@
                         </div>
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <div class="sidebar">
-                                <div class="widget">
-                                    <div class="banner-spot clearfix">
-                                        <div class="banner-img">
-                                            <img src="upload/banner_07.jpg" alt="" class="img-fluid" />
-                                        </div>
-                                        <!-- end banner-img -->
-                                    </div>
-                                    <!-- end banner -->
-                                </div>
-                                <!-- end widget -->
-
                                 <div class="widget">
                                     <h2 class="widget-title">Tin Mới Nhất</h2>
                                     <div class="blog-list-widget">
@@ -112,28 +101,28 @@
                                     <div class="row text-center">
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                             <a class="social-button facebook-button">
-                                                <i class="fa fa-facebook"></i>
+                                                <i class="fab fa-facebook"></i>
                                                 <p>27k</p>
                                             </a>
                                         </div>
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                             <a class="social-button twitter-button">
-                                                <i class="fa fa-twitter"></i>
+                                                <i class="fab fa-twitter"></i>
                                                 <p>98k</p>
                                             </a>
                                         </div>
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                             <a class="social-button google-button">
-                                                <i class="fa fa-google-plus"></i>
+                                                <i class="fab fa-google-plus-g"></i>
                                                 <p>17k</p>
                                             </a>
                                         </div>
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                             <a class="social-button youtube-button">
-                                                <i class="fa fa-youtube"></i>
+                                                <i class="fab fa-youtube"></i>
                                                 <p>22k</p>
                                             </a>
                                         </div>

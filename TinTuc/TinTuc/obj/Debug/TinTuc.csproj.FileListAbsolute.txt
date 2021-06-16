@@ -10,6 +10,6 @@ D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\bin\EntityFramework.SqlServer.xml
 D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\bin\CKEditor.NET.dll
 D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\bin\CKFinder.dll
 D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\bin\CKFinder.pdb
-D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\obj\Debug\TinTuc.csproj.AssemblyReference.cache
 D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\obj\Debug\TinTuc.csproj.CoreCompileInputs.cache
 D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\obj\Debug\TinTuc.csproj.CopyComplete
+D:\Đồ án LT Web nâng cao\TinTuc\TinTuc\obj\Debug\TinTuc.csproj.AssemblyReference.cache

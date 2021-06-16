@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="page-wrapper">
         <div class="blog-top clearfix">
-            <h4 class="pull-left">All News</h4>
+            <h4 class="pull-left">Tất cả tin tức</h4>
         </div>
         <!-- end blog-top -->
 
@@ -40,23 +40,6 @@
         <!-- end blog-list -->
     </div>
     <!-- end page-wrapper -->
-
-    <div class="row">
-        <div class="col-md-12">
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-start">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <!-- end col -->
-    </div>
-    <!-- end row -->
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="foot" runat="server">
 </asp:Content>

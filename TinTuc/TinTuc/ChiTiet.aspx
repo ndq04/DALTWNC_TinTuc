@@ -77,7 +77,7 @@
                         <div class="col-lg-4">
                             <div class="blog-box">
                                 <div class="post-media">
-                                    <a href="ChiTiet.aspx?Idbv=<%# Eval("Id") %>&Iddm=<%# Eval("Id") %>" title="">
+                                    <a href="ChiTiet.aspx?Idbv=<%# Eval("Id") %>&Iddm=<%# Eval("Id_Categories") %>" title="">
                                         <img src='<%# "Uploads/AnhBaiViet/" + getAnhDaiDien(Convert.ToInt32(Eval("Id"))) %>' alt="" style="height: 150px">
                                         <div class="hovereffect">
                                             <span class=""></span>
@@ -87,8 +87,7 @@
                                 </div>
                                 <!-- end media -->
                                 <div class="blog-meta">
-                                    <h4><a href="ChiTiet.aspx?Idbv=<%# Eval("Id") %>&Iddm=<%# Eval("Id") %>" title=""><%# Eval("TenBV") %></a></h4>
-                                    <small><a  title=""></a></small>
+                                    <h4><a href="ChiTiet.aspx?Idbv=<%# Eval("Id") %>&Iddm=<%# Eval("Id_Categories") %>" title=""><%# Eval("TenBV") %></a></h4>
                                     <small><a  title=""><%# Eval("NgayDang") %></a></small>
                                 </div>
                                 <!-- end meta -->
