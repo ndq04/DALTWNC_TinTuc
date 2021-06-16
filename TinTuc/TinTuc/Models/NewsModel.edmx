@@ -267,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TinTucEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="NewsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Comment" EntityType="Self.Comment" />
           <EntitySet Name="Media" EntityType="Self.Media" />
@@ -409,7 +409,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TinTucModelStoreContainer" CdmEntityContainer="TinTucEntities">
+        <EntityContainerMapping StorageEntityContainer="TinTucModelStoreContainer" CdmEntityContainer="NewsEntities">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="TinTucModel.Categories">
               <MappingFragment StoreEntitySet="Categories">

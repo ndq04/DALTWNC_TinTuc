@@ -3,13 +3,32 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="container-fluid">
+        <div class="row mt-4 mb-4">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <asp:DropDownList class="form-control" runat="server" ID="ddlBaiViet">
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <asp:Button runat="server" ID="btnLoc"
+                                CssClass="btn btn-success" Text="Lọc Theo Bài Viết"
+                                OnCommand="btnLocPost_Command" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card shadow mt-5">
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="table table-bordered" id="dataTable">
                         <asp:Panel runat="server" ID="pnError" Visible="false">
                             <div class="alert alert-danger">
-                                <asp:Label runat="server" ID="lbError"></asp:Label><asp:HyperLink runat="server" ID="hpError" class="alert-link"></asp:HyperLink>.
+                                <asp:Label runat="server" ID="lbError"></asp:Label><asp:HyperLink runat="server" ID="hpError" class="alert-link"></asp:HyperLink>
                             </div>
                         </asp:Panel>
                         <asp:GridView runat="server"
@@ -17,8 +36,7 @@
                             ID="dgvBinhLuan"
                             class="table table-bordered table-hover">
                             <Columns>
-                                <asp:BoundField DataField="Id" HeaderText="ID Bình Luận" />
-                                <asp:BoundField DataField="Post.TenBV" HeaderText="Tên Bài Viết" />
+                                <asp:BoundField DataField="Id" HeaderText="ID Bình Luận" /> 
                                 <asp:BoundField DataField="NoiDung" HeaderText="Nội Dung" />
                                 <asp:BoundField DataField="NgayViet" HeaderText="Ngày Viết" />
                                 <asp:BoundField DataField="ButDanh" HeaderText="Bút Danh" />
@@ -35,6 +53,11 @@
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
+                         <asp:Panel runat="server" ID="pnEmpty" Visible="false">
+                            <div class="alert alert-danger">
+                                <asp:Label runat="server" ID="lbEmpty"></asp:Label><asp:HyperLink runat="server" ID="HyperLink1" class="alert-link"></asp:HyperLink>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ namespace TinTuc.Admin
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             // Thực hiện kiểm tra tài khoản/mật khẩu có khớp trong db hay không
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             string taikhoan = txtTaiKhoan.Text;
             string matkhau = txtMatKhau.Text;
             int soluong = db.Users.Count(x => x.Username == taikhoan && x.Password == matkhau);

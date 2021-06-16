@@ -9,7 +9,7 @@ namespace TinTuc
 {
     public partial class ChiTiet : System.Web.UI.Page
     {
-        Models.TinTucEntities db = new Models.TinTucEntities();
+        Models.NewsEntities db = new Models.NewsEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
             int Idbv =Convert.ToInt32(Request.QueryString["Idbv"]);
@@ -32,7 +32,7 @@ namespace TinTuc
         }
         public string getAnhDaiDien(int Idbv)
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             Models.Media obj = db.Media.FirstOrDefault(x => x.Id_Post == Idbv);
             if (obj == null)
             {

@@ -97,7 +97,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TinTucEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="NewsEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Categories" />
     <EntitySet Name="Comment" EntityType="Self.Comment" />
     <EntitySet Name="Media" EntityType="Self.Media" />

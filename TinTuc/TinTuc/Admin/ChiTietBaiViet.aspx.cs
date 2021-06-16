@@ -15,16 +15,13 @@ namespace TinTuc.Admin
             {
                 getDanhMuc();
                 int Id = Convert.ToInt32(Request.QueryString["Id"]);
-                if (Id != null)
-                {
-                    getData(Id);
-                }
+                getData(Id);
             }
         }
         public void getData(int Id)
         {
-            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
-            TinTuc.Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
+            Models.NewsEntities db = new Models.NewsEntities();
+            Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
             if (obj == null)
             {
                 Response.Redirect("QuanLyBaiViet.aspx");
@@ -42,7 +39,7 @@ namespace TinTuc.Admin
 
         public void getDanhMuc()
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             cmbDanhMuc.DataSource = db.Categories.ToList();
             cmbDanhMuc.DataValueField = "Id";
             cmbDanhMuc.DataTextField = "TenDM";
@@ -52,14 +49,14 @@ namespace TinTuc.Admin
         {
             try
             {
-                Models.TinTucEntities db = new Models.TinTucEntities();
+                Models.NewsEntities db = new Models.NewsEntities();
                 int Id = Convert.ToInt32(txtMaBV.Text);
                 string tenbv = txtTenBV.Text;
                 string mota = txtMoTa.Text;
                 string noidung = txtNoiDung.Text;
                 string tacgia = txtTacGia.Text;
                 Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
-                if (Id != null && tenbv != null && tenbv != "" && mota != null && mota != "" && noidung != null && noidung != "" && tacgia != null && tacgia != "")
+                if (tenbv != null && tenbv != "" && mota != null && mota != "" && noidung != null && noidung != "" && tacgia != null && tacgia != "")
                 {
 
                     obj = new Models.Post();

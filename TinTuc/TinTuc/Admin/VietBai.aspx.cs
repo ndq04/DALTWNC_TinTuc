@@ -18,7 +18,7 @@ namespace TinTuc.Admin
         }
         public void getDanhMuc()
         {
-            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
+            TinTuc.Models.NewsEntities db = new Models.NewsEntities();
             ddlDanhMuc.DataSource = db.Categories.ToList();
             ddlDanhMuc.DataValueField = "Id";
             ddlDanhMuc.DataTextField = "Ten";
@@ -29,7 +29,7 @@ namespace TinTuc.Admin
             try
             {
                 // Kiểm tra mã có tồn tại chưa?
-                Models.TinTucEntities db = new Models.TinTucEntities();
+                Models.NewsEntities db = new Models.NewsEntities();
                 string tenbv = txtTenBV.Text;
                 string mota = txtMoTa.Text;
                 string noidung = txtNoiDung.Text;

@@ -18,7 +18,7 @@ namespace TinTuc
         }
         public void getData()
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
 
             rpPost.DataSource = db.DanhMuc_SelectAll();
             rpPost.DataBind();
@@ -28,7 +28,7 @@ namespace TinTuc
         }
         public string getAnhDaiDien(int IdBV)
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             Models.Media obj = db.Media.FirstOrDefault(x => x.Id_Post == IdBV);
             if (obj == null)
             {

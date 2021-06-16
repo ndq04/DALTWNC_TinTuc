@@ -18,13 +18,13 @@ namespace TinTuc
         }
         public void getData()
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             rpPost.DataSource = db.Post.Take(30).ToList();
             rpPost.DataBind();
         }
         public string getAnhDaiDien(int Idbv)
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             Models.Media obj = db.Media.FirstOrDefault(x => x.Id_Post == Idbv);
             if (obj == null)
             {

@@ -18262,13 +18262,6 @@
     <Content Include="Templates\fonts\fontawesome-webfont.woff" />
     <Content Include="Templates\fonts\fontawesome-webfont.woff2" />
     <Content Include="Templates\fonts\FontAwesome.otf" />
-    <EntityDeploy Include="Models\NewsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NewsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\NewsModel.edmx.diagram">
-      <DependentUpon>NewsModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Templates\fontawesome\less\brands.less" />
     <Content Include="Templates\fontawesome\less\duotone.less" />
     <Content Include="Templates\fontawesome\less\fontawesome.less" />
@@ -18415,6 +18408,13 @@
     <Content Include="Templates\fontawesome\__MACOSX\webfonts\._fa-solid-900.woff" />
     <Content Include="Templates\fontawesome\__MACOSX\webfonts\._fa-solid-900.woff2" />
     <Content Include="Templates\css\bootstrap.css.map" />
+    <EntityDeploy Include="Models\NewsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NewsModel.edmx.diagram">
+      <DependentUpon>NewsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -18582,6 +18582,9 @@
     <Compile Include="Models\Media.cs">
       <DependentUpon>NewsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Media.cs">
+      <DependentUpon>NewsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NewsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -18601,7 +18604,7 @@
       <DependentUpon>NewsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Post.cs">
-      <DependentUpon>NewModels.tt</DependentUpon>
+      <DependentUpon>NewsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Post.cs">
       <DependentUpon>NewsModel.tt</DependentUpon>
@@ -18616,7 +18619,7 @@
       <DependentUpon>NewsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>NewModels.tt</DependentUpon>
+      <DependentUpon>NewsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
       <DependentUpon>NewsModel.tt</DependentUpon>

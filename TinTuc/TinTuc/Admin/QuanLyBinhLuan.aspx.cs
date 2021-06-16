@@ -13,15 +13,23 @@ namespace TinTuc.Admin
         {
             if (!IsPostBack)
             {
+                getBaiViet();
                 getData();
             }
         }
         public void getData()
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
-            List<Models.Comment> lst = db.Comment.ToList();
-            dgvBinhLuan.DataSource = lst;
+            Models.NewsEntities db = new Models.NewsEntities();
+            dgvBinhLuan.DataSource = db.BinhLuan_ByIdPost(Convert.ToInt32(ddlBaiViet.SelectedValue));
             dgvBinhLuan.DataBind();
+        }
+        public void getBaiViet()
+        {
+            TinTuc.Models.NewsEntities db = new Models.NewsEntities();
+            ddlBaiViet.DataSource = db.Post.ToList();
+            ddlBaiViet.DataValueField = "Id";
+            ddlBaiViet.DataTextField = "TenBV";
+            ddlBaiViet.DataBind();
         }
 
         protected void btnXoa_Command(object sender, CommandEventArgs e)
@@ -29,7 +37,7 @@ namespace TinTuc.Admin
             try
             {
                 int ID_Comment = Convert.ToInt32(e.CommandArgument);
-                Models.TinTucEntities db = new Models.TinTucEntities();
+                Models.NewsEntities db = new Models.NewsEntities();
 
                 Models.Comment obj = db.Comment.FirstOrDefault(x => x.Id == ID_Comment);
                 if (obj != null)
@@ -44,6 +52,12 @@ namespace TinTuc.Admin
                 pnError.Visible = true;
                 lbError.Text = "Không thể xóa bình luận này. Vui Lòng Kiểm Tra Lại !";
             }
+        }
+        protected void btnLocPost_Command(object sender, CommandEventArgs e)
+        {
+            Models.NewsEntities db = new Models.NewsEntities();
+            dgvBinhLuan.DataSource = db.BinhLuan_ByIdPost(Convert.ToInt32(ddlBaiViet.SelectedValue));
+            dgvBinhLuan.DataBind();
         }
     }
 }

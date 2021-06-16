@@ -15,10 +15,10 @@ namespace TinTuc.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class TinTucEntities : DbContext
+    public partial class NewsEntities : DbContext
     {
-        public TinTucEntities()
-            : base("name=TinTucEntities")
+        public NewsEntities()
+            : base("name=NewsEntities")
         {
         }
     

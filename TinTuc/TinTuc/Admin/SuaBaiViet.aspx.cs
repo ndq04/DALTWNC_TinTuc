@@ -15,16 +15,13 @@ namespace TinTuc.Admin
             {
                 getDanhMuc();
                 int Idbv =Convert.ToInt32( Request.QueryString["Idbv"]);
-                if (Idbv != null)
-                {
-                    getData(Idbv);
-                }
+                getData(Idbv);
             }
         }
 
         public void getDanhMuc()
         {
-            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
+            TinTuc.Models.NewsEntities db = new Models.NewsEntities();
             cmbDanhMuc.DataSource = db.Categories.ToList();
             cmbDanhMuc.DataValueField = "Id";
             cmbDanhMuc.DataTextField = "Ten";
@@ -33,7 +30,7 @@ namespace TinTuc.Admin
 
         public void getData(int Id)
         {
-            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
+            TinTuc.Models.NewsEntities db = new Models.NewsEntities();
             TinTuc.Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
             if (obj == null)
             {
@@ -54,14 +51,14 @@ namespace TinTuc.Admin
         {
             try
             {
-                Models.TinTucEntities db = new Models.TinTucEntities();
+                Models.NewsEntities db = new Models.NewsEntities();
                 int Id = Convert.ToInt32( txtMaBV.Text);
                 string tenbv = txtTenBV.Text;
                 string mota = txtMoTa.Text;
                 string noidung = txtNoiDung.Text;
                 string tacgia = txtTacGia.Text;
                 Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
-                if (obj != null && Id != null && tenbv != null && tenbv != "" && mota != null && mota != "" && noidung != null && noidung != "" && tacgia != null && tacgia != "")
+                if (obj != null && tenbv != null && tenbv != "" && mota != null && mota != "" && noidung != null && noidung != "" && tacgia != null && tacgia != "")
                 {
                     obj.Id_Categories =Convert.ToInt32(cmbDanhMuc.SelectedValue);
                     obj.TenBV = txtTenBV.Text;

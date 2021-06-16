@@ -7,11 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TinTuc.Admin {
-    
-    
-    public partial class QuanLyBinhLuan {
-        
+namespace TinTuc.Admin
+{
+
+
+    public partial class QuanLyBinhLuan
+    {
+
+        /// <summary>
+        /// ddlBaiViet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBaiViet;
+
+        /// <summary>
+        /// btnLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLoc;
+
         /// <summary>
         /// pnError control.
         /// </summary>
@@ -20,7 +40,7 @@ namespace TinTuc.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnError;
-        
+
         /// <summary>
         /// lbError control.
         /// </summary>
@@ -29,7 +49,7 @@ namespace TinTuc.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbError;
-        
+
         /// <summary>
         /// hpError control.
         /// </summary>
@@ -38,7 +58,7 @@ namespace TinTuc.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hpError;
-        
+
         /// <summary>
         /// dgvBinhLuan control.
         /// </summary>
@@ -47,5 +67,32 @@ namespace TinTuc.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvBinhLuan;
+
+        /// <summary>
+        /// pnEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnEmpty;
+
+        /// <summary>
+        /// lbEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEmpty;
+
+        /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
     }
 }

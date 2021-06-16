@@ -80,7 +80,7 @@
                                         <div class="list-group">
                                             <asp:Repeater runat="server" ID="rpNew">
                                                 <ItemTemplate>
-                                                    <a href="ChiTiet.aspx?Idbv=<%# Eval("Id") %>&Iddm=<%# Eval("Id") %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                    <a href="ChiTiet.aspx?Idbv=<%# Eval("Id") %>&Iddm=<%# Eval("Id_Categories") %>" class="list-group-item list-group-item-action flex-column align-items-start">
                                                         <div class="w-100 justify-content-between">
                                                             <img src='<%# "Uploads/AnhBaiViet/" + getAnhDaiDien(Convert.ToInt32(Eval("Id"))) %>' alt="" class="img-fluid float-left" />
                                                             <h5 class="mb-1"><%#Eval("TenBV") %></h5>
@@ -92,41 +92,6 @@
                                         </div>
                                     </div>
                                     <!-- end blog-list -->
-                                </div>
-                                <!-- end widget -->
-
-                                <div class="widget">
-                                    <h2 class="widget-title">Follow Us</h2>
-
-                                    <div class="row text-center">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a class="social-button facebook-button">
-                                                <i class="fab fa-facebook"></i>
-                                                <p>27k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a class="social-button twitter-button">
-                                                <i class="fab fa-twitter"></i>
-                                                <p>98k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a class="social-button google-button">
-                                                <i class="fab fa-google-plus-g"></i>
-                                                <p>17k</p>
-                                            </a>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                            <a class="social-button youtube-button">
-                                                <i class="fab fa-youtube"></i>
-                                                <p>22k</p>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- end widget -->
                             </div>

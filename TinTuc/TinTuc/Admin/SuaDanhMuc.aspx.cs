@@ -14,15 +14,12 @@ namespace TinTuc.Admin
             if (!IsPostBack)
             {
                 int Id =Convert.ToInt32( Request.QueryString["Iddm"]);
-                if (Id != null)
-                {
-                    getData(Id);
-                }
+                getData(Id);
             }
         }
         public void getData(int Id)
         {
-            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
+            TinTuc.Models.NewsEntities db = new Models.NewsEntities();
             TinTuc.Models.Categories obj = db.Categories.FirstOrDefault(x => x.Id == Id);
             if (obj == null)
             {
@@ -40,11 +37,11 @@ namespace TinTuc.Admin
         {
             try
             {
-                Models.TinTucEntities db = new Models.TinTucEntities();
+                Models.NewsEntities db = new Models.NewsEntities();
                 int Id =Convert.ToInt32( txtMaDM.Text);
                 string tendm = txtTenDM.Text;
                 Models.Categories obj = db.Categories.FirstOrDefault(x => x.Id == Id);
-                if (obj != null && Id != null && tendm != null && tendm != "")
+                if (obj != null  && tendm != null && tendm != "")
                 {
                     obj.Ten = txtTenDM.Text;
                     db.SaveChanges();

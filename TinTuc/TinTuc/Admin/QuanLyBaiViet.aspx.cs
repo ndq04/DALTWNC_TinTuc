@@ -19,14 +19,14 @@ namespace TinTuc.Admin
         }
         public void getData()
         {
-            Models.TinTucEntities db = new Models.TinTucEntities();
+            Models.NewsEntities db = new Models.NewsEntities();
             List<Models.Post> lst = db.Post.ToList();
             dgvBaiViet.DataSource = lst;
             dgvBaiViet.DataBind();
         }
         public void getDanhMuc()
         {
-            TinTuc.Models.TinTucEntities db = new Models.TinTucEntities();
+            TinTuc.Models.NewsEntities db = new Models.NewsEntities();
             ddlDanhMuc.DataSource = db.Categories.ToList();
             ddlDanhMuc.DataValueField = "Id";
             ddlDanhMuc.DataTextField = "Ten";
@@ -37,7 +37,7 @@ namespace TinTuc.Admin
             try
             {
                 int Id =Convert.ToInt32( e.CommandArgument.ToString());
-                Models.TinTucEntities db = new Models.TinTucEntities();
+                Models.NewsEntities db = new Models.NewsEntities();
 
                 Models.Post obj = db.Post.FirstOrDefault(x => x.Id == Id);
                 if (obj != null)
@@ -55,7 +55,7 @@ namespace TinTuc.Admin
         }
         protected void btnLoc_Command(object sender, CommandEventArgs e)
         {
-            Models.TinTucEntities db = new Models.TinTucEntities(); 
+            Models.NewsEntities db = new Models.NewsEntities(); 
             dgvBaiViet.DataSource = db.BaiViet_ByIdCategories(Convert.ToInt32( ddlDanhMuc.SelectedValue));
             dgvBaiViet.DataBind();
         }
