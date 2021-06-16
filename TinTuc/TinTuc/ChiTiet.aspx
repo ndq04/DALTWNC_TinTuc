@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="single-post-media">
-                        <img src='<%# "Uploads/AnhBaiViet/" + getAnhDaiDien(Convert.ToInt32(Eval("Id"))) %>' style="width: 720px"/>
+                        <img src='<%# "Uploads/AnhBaiViet/" + getAnhDaiDien(Convert.ToInt32(Eval("Id"))) %>' style="width: 820px"/>
                     </div>
                     <!-- end media -->
 
